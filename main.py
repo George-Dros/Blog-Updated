@@ -5,20 +5,18 @@ import requests
 response = requests.get("https://api.npoint.io/2bbe3d82b601b0484edc")
 posts = response.json()
 
-
 app = Flask(__name__)
+
 
 @app.route("/")
 def all_posts():
     return render_template("index.html", all_posts=posts)
 
+
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-# @app.route("/contact")
-# def contact():
-#     return render_template("contact.html")
 
 @app.route("/post/<int:index>")
 def show_post(index):
@@ -36,6 +34,11 @@ def contact():
         email = request.form['email']
         phone = request.form['phone']
         message = request.form['message']
+
+        print(name)
+        print(email)
+        print(phone)
+        print(message)
 
         return render_template("contact.html", msg_sent=True)
 
